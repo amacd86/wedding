@@ -23,8 +23,6 @@
             font-style: italic;
             font-size: 2rem;
             color: #f5ede0;
-            opacity: 0;
-            animation: fadeUp 1s ease forwards 0.2s;
         }
 
         .login-box {
@@ -33,8 +31,6 @@
             align-items: center;
             gap: 0.8rem;
             width: 260px;
-            opacity: 0;
-            animation: fadeUp 1s ease forwards 0.5s;
         }
 
         input[type="password"] {
@@ -71,29 +67,16 @@
         button:hover { background: #5c1f4a; }
 
         .error {
-            visibility: hidden;
             font-family: 'Josefin Sans', sans-serif;
             font-size: 0.6rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: #c8813a;
+            visibility: hidden;
             height: 1rem;
         }
 
         .error.show { visibility: visible; }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-8px); }
-            75% { transform: translateX(8px); }
-        }
-
-        .shake { animation: shake 0.3s ease; }
     </style>
 </head>
 <body>
@@ -109,7 +92,6 @@
 <script>
     async function tryLogin() {
         const password = document.getElementById('password').value;
-        const box = document.querySelector('.login-box');
 
         const res = await fetch('/login-check', {
             method: 'POST',
@@ -120,11 +102,9 @@
         if (res.ok) {
             window.location.href = '/';
         } else {
-            box.classList.remove('shake');
-            void box.offsetWidth;
-            box.classList.add('shake');
             document.getElementById('error').classList.add('show');
             document.getElementById('password').value = '';
+            document.getElementById('password').focus();
         }
     }
 
