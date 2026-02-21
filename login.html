@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angus + Tessa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Josefin+Sans:wght@200;300&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #3a0f30;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2rem;
+            color: #f5ede0;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 0.2s;
+        }
+
+        .login-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            width: 260px;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 0.5s;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(91, 196, 180, 0.35);
+            color: #f5ede0;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="password"]:focus { border-color: rgba(91, 196, 180, 0.8); }
+        input[type="password"]::placeholder { color: rgba(245, 237, 224, 0.25); }
+
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            background: #3a9e8f;
+            color: #f5ede0;
+            border: none;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover { background: #5c1f4a; }
+
+        .error {
+            display: none;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #c8813a;
+        }
+
+        .error.show { display: block; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+
+        .shake { animation: shake 0.3s ease; }
+    </style>
+</head>
+<body>
+
+    <h1>Angus & Tessa</h1>
+
+    <div class="login-box">
+        <input type="password" id="password" placeholder="Password" autofocus>
+        <button onclick="tryLogin()">Enter</button>
+        <span class="error" id="error">Incorrect password</span>
+    </div>
+
+<script>
+    async function tryLogin() {
+        const password = document.getElementById('password').value;
+        const box = document.querySelector('.login-box');
+
+        const res = await fetch('/login-check', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password })
+        });
+
+        if (res.ok) {
+            window.location.href = '/';
+        } else {
+            box.classList.remove('shake');
+            void box.offsetWidth;
+            box.classList.add('shake');
+            document.getElementById('error').classList.add('show');
+            document.getElementById('password').value = '';
+        }
+    }
+
+    document.getElementById('password').addEventListener('keydown', e => {
+        if (e.key === 'Enter') tryLogin();
+    });
+</script>
+
+</body>
+</html>

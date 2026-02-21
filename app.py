@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, session, redirect, url_for
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -7,26 +7,62 @@ import json
 from datetime import datetime
 
 app = Flask(__name__, static_folder='.')
+app.secret_key = os.environ.get('SECRET_KEY', 'change-this-secret-key-on-pi')
 
-# Config — set these as environment variables on the Pi
+# Config
 GMAIL_USER = os.environ.get('GMAIL_USER', 'amacd86@gmail.com')
 GMAIL_APP_PASSWORD = os.environ.get('GMAIL_APP_PASSWORD', '')
 NOTIFY_EMAIL = os.environ.get('NOTIFY_EMAIL', 'amacd86@gmail.com')
 RSVP_LOG = '/home/gus/wedding/rsvps.json'
+SITE_PASSWORD = os.environ.get('SITE_PASSWORD', 'woodstock2026')
+
+def is_logged_in():
+    return session.get('authenticated') == True
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = False
+    if request.method == 'POST':
+        if request.form.get('password') == SITE_PASSWORD:
+            session['authenticated'] = True
+            return redirect('/')
+        else:
+            error = True
+    return send_from_directory('.', 'login.html'), (401 if error else 200)
+
+@app.route('/login-check', methods=['POST'])
+def login_check():
+    data = request.get_json()
+    if data.get('password') == SITE_PASSWORD:
+        session['authenticated'] = True
+        return jsonify({'status': 'ok'}), 200
+    return jsonify({'status': 'error'}), 401
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/login')
 
 @app.route('/')
 def index():
+    if not is_logged_in():
+        return redirect('/login')
     return send_from_directory('.', 'index.html')
 
-    # Serve static files
 @app.route('/<path:filename>')
 def static_files(filename):
+    if filename in ('login.html', 'save-the-date.jpg', 'favicon.ico'):
+        return send_from_directory('.', filename)
+    if not is_logged_in():
+        return redirect('/login')
     return send_from_directory('.', filename)
 
 @app.route('/rsvp', methods=['POST'])
 def rsvp():
-    data = request.get_json()
+    if not is_logged_in():
+        return jsonify({'status': 'unauthorized'}), 401
 
+    data = request.get_json()
     first = data.get('firstName', '')
     last = data.get('lastName', '')
     email = data.get('email', '')
@@ -35,7 +71,6 @@ def rsvp():
     dietary = data.get('dietary', 'None')
     message = data.get('message', '')
 
-    # Log RSVP to file
     rsvp_entry = {
         'timestamp': datetime.now().isoformat(),
         'name': f'{first} {last}',
@@ -58,7 +93,6 @@ def rsvp():
     except Exception as e:
         print(f'Failed to log RSVP: {e}')
 
-    # Send email notification
     try:
         attending_str = 'Joyfully accepts ✓' if attending == 'yes' else 'Regretfully declines'
         body = f"""
