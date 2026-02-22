@@ -13,7 +13,7 @@ app.secret_key = os.environ.get('SECRET_KEY', 'change-this-secret-key-on-pi')
 GMAIL_USER = os.environ.get('GMAIL_USER', 'amacd86@gmail.com')
 GMAIL_APP_PASSWORD = os.environ.get('GMAIL_APP_PASSWORD', '')
 NOTIFY_EMAIL = os.environ.get('NOTIFY_EMAIL', 'amacd86@gmail.com')
-RSVP_LOG = '/home/gus/wedding/rsvps.json'
+RSVP_LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'rsvps.json')
 SITE_PASSWORD = os.environ.get('SITE_PASSWORD', 'woodstock2026')
 
 def is_logged_in():
@@ -122,7 +122,46 @@ Message:
     except Exception as e:
         print(f'Failed to send email: {e}')
 
+
     return jsonify({'status': 'ok'}), 200
+
+
+# --- Photo Gallery Upload/Serve ---
+PHOTOS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'wedding_photos_PRE')
+os.makedirs(PHOTOS_DIR, exist_ok=True)
+
+@app.route('/photos-list')
+def photos_list():
+    if not is_logged_in():
+        return jsonify({'status': 'unauthorized'}), 401
+    try:
+        files = [f for f in os.listdir(PHOTOS_DIR)
+                 if f.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.webp'))]
+        files.sort(reverse=True)
+        return jsonify({'photos': files})
+    except Exception as e:
+        return jsonify({'photos': []})
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    if not is_logged_in():
+        return jsonify({'status': 'unauthorized'}), 401
+    file = request.files.get('photo')
+    if not file:
+        return jsonify({'status': 'error', 'message': 'No file'}), 400
+    ext = os.path.splitext(file.filename)[1].lower()
+    if ext not in ('.jpg', '.jpeg', '.png', '.gif', '.webp'):
+        return jsonify({'status': 'error', 'message': 'Invalid file type'}), 400
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S_%f')
+    filename = f'{timestamp}{ext}'
+    file.save(os.path.join(PHOTOS_DIR, filename))
+    return jsonify({'status': 'ok', 'filename': filename})
+
+@app.route('/photos/<filename>')
+def serve_photo(filename):
+    if not is_logged_in():
+        return jsonify({'status': 'unauthorized'}), 401
+    return send_from_directory(PHOTOS_DIR, filename)
 
 
 if __name__ == '__main__':
