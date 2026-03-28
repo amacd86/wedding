@@ -127,7 +127,7 @@ Message:
 
 
 # --- Photo Gallery Upload/Serve ---
-PHOTOS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'wedding_photos_PRE')
+PHOTOS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'photos')
 os.makedirs(PHOTOS_DIR, exist_ok=True)
 
 @app.route('/photos-list')
