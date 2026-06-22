@@ -188,6 +188,16 @@
         .schedule-event .event-name { font-weight: 400; display: block; }
         .schedule-event .event-detail { font-style: italic; font-size: 0.95rem; color: rgba(245, 237, 224, 0.6); }
 
+        /* DRESS CODE */
+        #dress-code { background: var(--mauve); max-width: 100%; padding: 4rem 2rem; }
+        #dress-code .inner { max-width: 900px; margin: 0 auto; }
+        #dress-code .section-label { color: var(--teal-light); }
+        #dress-code .section-title { color: var(--cream); font-size: 2rem; }
+
+        .dress-code-content { color: var(--cream); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.8; }
+        .dress-code-content strong { font-weight: 400; color: var(--gold); }
+        .dress-code-content em { font-style: italic; }
+
         /* LOCATION */
         .location-card {
             background: var(--cream);
@@ -418,14 +428,30 @@
         <div class="divider fade-in"></div>
 
         <div class="schedule-day fade-in">
+            <div class="schedule-day-title">Thursday, August 13</div>
+            <div class="schedule-item">
+                <div class="schedule-time">After 4 PM</div>
+                <div class="schedule-event"><span class="event-name">Arrival & Check-in</span></div>
+            </div>
+        </div>
+
+        <div class="schedule-day fade-in">
             <div class="schedule-day-title">Friday, August 14</div>
             <div class="schedule-item">
-                <div class="schedule-time">4:00 PM</div>
-                <div class="schedule-event"><span class="event-name">Arrivals & Check-in</span><span class="event-detail">Settle in, explore the grounds</span></div>
+                <div class="schedule-time">Day</div>
+                <div class="schedule-event"><span class="event-name">Logistics Planning</span><span class="event-detail">Ceremony space, decorating, setup</span></div>
             </div>
             <div class="schedule-item">
-                <div class="schedule-time">7:00 PM</div>
-                <div class="schedule-event"><span class="event-name">Welcome Dinner</span><span class="event-detail">Casual gathering, drinks & food</span></div>
+                <div class="schedule-time">Afternoon</div>
+                <div class="schedule-event"><span class="event-name">Hang at the House</span><span class="event-detail">Enjoy the property & grounds</span></div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">Evening</div>
+                <div class="schedule-event"><span class="event-name">Casual Welcome Dinner</span></div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">Late Night</div>
+                <div class="schedule-event"><span class="event-name">Fire, Smores & Yard Games</span><span class="event-detail">Glow-in-the-dark fun</span></div>
             </div>
         </div>
 
@@ -433,32 +459,54 @@
             <div class="schedule-day-title">Saturday, August 15 — Wedding Day</div>
             <div class="schedule-item">
                 <div class="schedule-time">Morning</div>
-                <div class="schedule-event"><span class="event-name">Free Time</span><span class="event-detail">Hiking, relaxing, exploring Woodstock</span></div>
+                <div class="schedule-event"><span class="event-name">Breakfast & Hangout</span><span class="event-detail">Swimming, relaxing, enjoying the day</span></div>
             </div>
             <div class="schedule-item">
-                <div class="schedule-time">4:00 PM</div>
-                <div class="schedule-event"><span class="event-name">Ceremony</span><span class="event-detail">Please be seated by 3:45 PM</span></div>
+                <div class="schedule-time">Afternoon</div>
+                <div class="schedule-event"><span class="event-name">Get Ready</span><span class="event-detail">Prep for the evening</span></div>
             </div>
             <div class="schedule-item">
                 <div class="schedule-time">5:00 PM</div>
-                <div class="schedule-event"><span class="event-name">Cocktail Hour</span><span class="event-detail">Drinks & hors d'oeuvres</span></div>
+                <div class="schedule-event"><span class="event-name">Ceremony</span></div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">5:00 – 6:30 PM</div>
+                <div class="schedule-event"><span class="event-name">Cocktail Hour</span></div>
             </div>
             <div class="schedule-item">
                 <div class="schedule-time">6:30 PM</div>
-                <div class="schedule-event"><span class="event-name">Dinner & Dancing</span><span class="event-detail">Celebration under the stars</span></div>
+                <div class="schedule-event"><span class="event-name">Dinner, Dessert & Dancing</span></div>
             </div>
         </div>
 
         <div class="schedule-day fade-in">
             <div class="schedule-day-title">Sunday, August 16</div>
             <div class="schedule-item">
-                <div class="schedule-time">10:00 AM</div>
-                <div class="schedule-event"><span class="event-name">Farewell Brunch</span><span class="event-detail">Send-off breakfast together</span></div>
+                <div class="schedule-time">Morning</div>
+                <div class="schedule-event"><span class="event-name">Breakfast</span><span class="event-detail">Quick breakfast casserole on hand</span></div>
             </div>
             <div class="schedule-item">
-                <div class="schedule-time">12:00 PM</div>
-                <div class="schedule-event"><span class="event-name">Check-out</span><span class="event-detail">Safe travels home</span></div>
+                <div class="schedule-time">10:00 AM</div>
+                <div class="schedule-event"><span class="event-name">Check-out</span></div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- DRESS CODE -->
+<div id="dress-code">
+    <div class="inner">
+        <p class="section-label fade-in">Attire</p>
+        <h2 class="section-title fade-in">What to <em>Wear</em></h2>
+        <div class="divider fade-in" style="background: var(--teal-light);"></div>
+        
+        <div class="dress-code-content fade-in">
+            <p style="margin-bottom: 1.5rem;">
+                <strong>Ceremony & Reception:</strong> Cocktail attire. Look nice but keep it comfortable — no need to be too formal. We love fun colors and designs, so take a chance and wear something you've always wanted to!
+            </p>
+            <p>
+                <strong>All other times:</strong> <em>Comfies encouraged.</em> Come as you are for meals, games, and hanging out.
+            </p>
         </div>
     </div>
 </div>
@@ -529,10 +577,17 @@
                 <input class="form-input" type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-                <label class="form-label">Attending?</label>
+                <label class="form-label">Attending the wedding?</label>
                 <div class="radio-group">
                     <label class="radio-label"><input type="radio" name="attending" value="yes" required> Joyfully accepts</label>
                     <label class="radio-label"><input type="radio" name="attending" value="no"> Regretfully declines</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Joining us Thursday night?</label>
+                <div class="radio-group">
+                    <label class="radio-label"><input type="radio" name="thursday" value="yes"> Yes</label>
+                    <label class="radio-label"><input type="radio" name="thursday" value="no"> No</label>
                 </div>
             </div>
             <div class="form-group">
@@ -549,8 +604,16 @@
                 <input class="form-input" type="text" id="dietary" name="dietary" placeholder="None">
             </div>
             <div class="form-group">
+                <label class="form-label" for="songRequest">Song Request</label>
+                <input class="form-input" type="text" id="songRequest" name="songRequest" placeholder="Share a song you'd love to hear...">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="favoriteColor">Favorite Color</label>
+                <input class="form-input" type="text" id="favoriteColor" name="favoriteColor" placeholder="Tell us your favorite color...">
+            </div>
+            <div class="form-group">
                 <label class="form-label" for="message">Note for Angus & Tessa</label>
-                <textarea class="form-textarea" id="message" name="message" placeholder="Share a message, song request, or anything you'd like us to know..."></textarea>
+                <textarea class="form-textarea" id="message" name="message" placeholder="Share a message..."></textarea>
             </div>
             <button type="submit" class="submit-btn">Send RSVP</button>
         </form>
