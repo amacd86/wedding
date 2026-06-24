@@ -188,15 +188,8 @@
         .schedule-event .event-name { font-weight: 400; display: block; }
         .schedule-event .event-detail { font-style: italic; font-size: 0.95rem; color: rgba(245, 237, 224, 0.6); }
 
-        /* DRESS CODE */
-        #dress-code { background: var(--mauve); max-width: 100%; padding: 4rem 2rem; }
-        #dress-code .inner { max-width: 900px; margin: 0 auto; }
-        #dress-code .section-label { color: var(--teal-light); }
-        #dress-code .section-title em { color: var(--cream); }
-
-        .dress-code-content { color: var(--cream); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.8; }
-        .dress-code-content strong { font-weight: 400; color: var(--gold); }
-        .dress-code-content em { font-style: italic; }
+        /* MENU */
+        #menu { background: var(--warm-white); }
 
         /* LOCATION */
         .location-card {
@@ -225,76 +218,6 @@
         }
 
         .map-btn:hover { background: var(--plum); }
-
-        /* GALLERY */
-        #gallery { background: var(--deep-plum); max-width: 100%; padding: 6rem 2rem; }
-        #gallery .inner { max-width: 900px; margin: 0 auto; }
-        #gallery .section-label { color: var(--teal-light); }
-        #gallery .section-title { color: var(--cream); }
-        #gallery .divider { background: var(--gold); }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .upload-btn {
-            display: inline-block;
-            margin: 1.5rem 0;
-            padding: 0.7rem 2rem;
-            border: 1px solid rgba(91, 196, 180, 0.5);
-            color: var(--teal-light);
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .upload-btn:hover {
-            background: rgba(91, 196, 180, 0.1);
-        }
-
-        .gallery-grid img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            display: block;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-
-        .gallery-grid img:hover { opacity: 0.85; }
-
-        .gallery-placeholder {
-            aspect-ratio: 1;
-            background: rgba(245, 237, 224, 0.08);
-            border: 1px dashed rgba(245, 237, 224, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            color: rgba(245, 237, 224, 0.3);
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .gallery-placeholder:hover { border-color: var(--teal-light); color: var(--teal-light); }
-
-        .gallery-upload-hint {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 1rem;
-            color: rgba(245, 237, 224, 0.4);
-            text-align: center;
-            margin-top: 1.5rem;
-        }
 
         /* FAQ */
         #faq { background: var(--cream); max-width: 100%; padding: 6rem 2rem; }
@@ -421,6 +344,58 @@
             color: var(--plum);
         }
 
+        /* GALLERY */
+        #gallery { background: var(--deep-plum); max-width: 100%; padding: 6rem 2rem; }
+        #gallery .inner { max-width: 900px; margin: 0 auto; }
+        #gallery .section-label { color: var(--teal-light); }
+        #gallery .section-title { color: var(--cream); }
+        #gallery .divider { background: var(--gold); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .upload-btn {
+            display: inline-block;
+            margin: 1.5rem 0;
+            padding: 0.7rem 2rem;
+            border: 1px solid rgba(91, 196, 180, 0.5);
+            color: var(--teal-light);
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-btn:hover {
+            background: rgba(91, 196, 180, 0.1);
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-grid img:hover { opacity: 0.85; }
+
+        .gallery-upload-hint {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: rgba(245, 237, 224, 0.4);
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
         /* FOOTER */
         footer { background: var(--deep-plum); padding: 3rem 2rem; text-align: center; }
         .footer-names { font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; color: var(--cream); margin-bottom: 0.5rem; }
@@ -451,10 +426,9 @@
     <a href="#home">Home</a>
     <a href="#schedule">Schedule</a>
     <a href="#menu">Menu</a>
-    <a href="#location">Location</a>
-    <a href="#gallery">Gallery</a>
     <a href="#faq">FAQ</a>
     <a href="#rsvp">RSVP</a>
+    <a href="#gallery">Gallery</a>
 </nav>
 
 <!-- HERO -->
@@ -482,20 +456,20 @@
         <div class="schedule-day fade-in">
             <div class="schedule-day-title">Thursday, August 13</div>
             <div class="schedule-item">
-                <div class="schedule-time">After 4 PM</div>
-                <div class="schedule-event"><span class="event-name">Arrival & Check-in</span></div>
+                <div class="schedule-time">4:00 PM</div>
+                <div class="schedule-event"><span class="event-name">Check-in & Earliest Arrival Time</span></div>
             </div>
         </div>
 
         <div class="schedule-day fade-in">
             <div class="schedule-day-title">Friday, August 14</div>
             <div class="schedule-item">
-                <div class="schedule-time">Day</div>
-                <div class="schedule-event"><span class="event-name">Logistics Planning</span><span class="event-detail">Ceremony space, decorating, setup</span></div>
+                <div class="schedule-time">Morning</div>
+                <div class="schedule-event"><span class="event-name">Breakfast</span><span class="event-detail">Logistics planning for the couple</span></div>
             </div>
             <div class="schedule-item">
                 <div class="schedule-time">Afternoon</div>
-                <div class="schedule-event"><span class="event-name">Hang at the House</span><span class="event-detail">Enjoy the property & grounds</span></div>
+                <div class="schedule-event"><span class="event-name">Lunch & Hang at the House</span><span class="event-detail">Enjoy the property & grounds</span></div>
             </div>
             <div class="schedule-item">
                 <div class="schedule-time">Evening</div>
@@ -515,19 +489,23 @@
             </div>
             <div class="schedule-item">
                 <div class="schedule-time">Afternoon</div>
-                <div class="schedule-event"><span class="event-name">Get Ready</span><span class="event-detail">Prep for the evening</span></div>
+                <div class="schedule-event"><span class="event-name">Rehearsal Lunch</span></div>
             </div>
             <div class="schedule-item">
                 <div class="schedule-time">5:00 PM</div>
                 <div class="schedule-event"><span class="event-name">Ceremony</span></div>
             </div>
             <div class="schedule-item">
-                <div class="schedule-time">5:00 – 6:30 PM</div>
+                <div class="schedule-time">5:30 PM</div>
                 <div class="schedule-event"><span class="event-name">Cocktail Hour</span></div>
             </div>
             <div class="schedule-item">
                 <div class="schedule-time">6:30 PM</div>
-                <div class="schedule-event"><span class="event-name">Dinner, Dessert & Dancing</span></div>
+                <div class="schedule-event"><span class="event-name">Dinner by Chef Nadav</span></div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">Night</div>
+                <div class="schedule-event"><span class="event-name">Drinks, Dessert & Dancing</span></div>
             </div>
         </div>
 
@@ -535,11 +513,7 @@
             <div class="schedule-day-title">Sunday, August 16</div>
             <div class="schedule-item">
                 <div class="schedule-time">Morning</div>
-                <div class="schedule-event"><span class="event-name">Breakfast</span></div>
-            </div>
-            <div class="schedule-item">
-                <div class="schedule-time">10:00 AM</div>
-                <div class="schedule-event"><span class="event-name">Check-out</span></div>
+                <div class="schedule-event"><span class="event-name">Breakfast & Check-out by 10am</span><span class="event-detail">Breakfast on the go provided by the couple</span></div>
             </div>
         </div>
     </div>
@@ -553,39 +527,6 @@
     <p class="body-text fade-in" style="margin-bottom: 2rem;">A special dinner crafted by <em>Chef Nadav</em>, from his kitchen to your table.</p>
     <img src="angus-tessa-wedding-menuv2.jpg" alt="Wedding Dinner Menu" class="fade-in" style="max-width: 600px; width: 100%; display: block; margin: 0 auto; border: 1px solid rgba(92,31,74,0.15);">
 </section>
-
-<!-- LOCATION -->
-<section id="location">
-    <p class="section-label fade-in">Where to Go</p>
-    <h2 class="section-title fade-in">Woodstock, <em>New Hampshire</em></h2>
-    <div class="divider fade-in"></div>
-    <p class="body-text fade-in">Nestled in the White Mountains, Woodstock is one of New Hampshire's most beautiful small towns — surrounded by hiking trails, mountain views, and fresh air.</p>
-    <div class="location-card fade-in">
-        <div class="location-name">Venue Name</div>
-        <div class="location-address">WOODSTOCK, NH · ADD FULL ADDRESS</div>
-        <p class="location-note">More details on accommodations and directions will be shared as the date approaches. Nearby lodging options are plentiful — we'll send recommendations soon.</p>
-        <a href="https://maps.google.com/?q=Woodstock,NH" target="_blank" class="map-btn">Open in Maps</a>
-    </div>
-    <p class="body-text fade-in" style="margin-top: 2rem;"><em>Getting there:</em> Woodstock is approximately 2 hours from Boston, 3.5 hours from New York City. Nearest airports: Manchester-Boston Regional (MHT) or Portland International Jetport (PWM).</p>
-</section>
-
-<!-- GALLERY -->
-<div id="gallery">
-    <div class="inner">
-        <p class="section-label fade-in">Photos</p>
-        <h2 class="section-title fade-in">Our <em>Moments</em></h2>
-        <div class="divider fade-in"></div>
-
-        <label class="upload-btn fade-in">
-            + Add Photo
-            <input type="file" id="photoInput" accept="image/*" multiple style="display:none">
-        </label>
-
-        <div class="gallery-grid fade-in" id="galleryGrid">
-            <p class="gallery-upload-hint">No photos yet — be the first to upload!</p>
-        </div>
-    </div>
-</div>
 
 <!-- FAQ -->
 <div id="faq">
@@ -670,25 +611,12 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="form-label" for="guests">Number of Guests (including yourself)</label>
-                <select class="form-select" id="guests" name="guests">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
-            <div class="form-group">
                 <label class="form-label" for="dietary">Dietary Restrictions or Allergies</label>
                 <input class="form-input" type="text" id="dietary" name="dietary" placeholder="None">
             </div>
             <div class="form-group">
                 <label class="form-label" for="songRequest">Song Request</label>
                 <input class="form-input" type="text" id="songRequest" name="songRequest" placeholder="Share a song you'd love to hear...">
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="favoriteColor">Favorite Color</label>
-                <input class="form-input" type="text" id="favoriteColor" name="favoriteColor" placeholder="Tell us your favorite color...">
             </div>
             <div class="form-group">
                 <label class="form-label" for="message">Note for Angus & Tessa</label>
@@ -698,6 +626,38 @@
         </form>
 
         <div class="form-success" id="formSuccess">Thank you! We'll see you in August. ✦</div>
+    </div>
+</div>
+
+<!-- VENUE -->
+<section id="venue">
+    <p class="section-label fade-in">Where We're Celebrating</p>
+    <h2 class="section-title fade-in">Woodstock, <em>New Hampshire</em></h2>
+    <div class="divider fade-in"></div>
+    <p class="body-text fade-in">Nestled in the White Mountains, Woodstock is one of New Hampshire's most beautiful small towns — surrounded by hiking trails, mountain views, and fresh air.</p>
+    <div class="location-card fade-in">
+        <div class="location-name">55 South Station Road</div>
+        <div class="location-address">WOODSTOCK, NH 03293</div>
+        <p class="location-note">Our home for the weekend. More details on accommodations and directions coming soon. Nearby lodging options are plentiful — we'll send recommendations soon.</p>
+        <a href="https://maps.google.com/?q=55+South+Station+Road+Woodstock+NH" target="_blank" class="map-btn">Open in Maps</a>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<div id="gallery">
+    <div class="inner">
+        <p class="section-label fade-in">Photos</p>
+        <h2 class="section-title fade-in">Our <em>Moments</em></h2>
+        <div class="divider fade-in"></div>
+
+        <label class="upload-btn fade-in">
+            + Add Photo
+            <input type="file" id="photoInput" accept="image/*" multiple style="display:none">
+        </label>
+
+        <div class="gallery-grid fade-in" id="galleryGrid">
+            <p class="gallery-upload-hint">No photos yet — be the first to upload!</p>
+        </div>
     </div>
 </div>
 
