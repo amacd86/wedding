@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory, session, redirect, url_for
+from flask import Flask, request, jsonify, send_from_directory, session, redirect, url_for, render_template_string
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -101,7 +101,7 @@ scheduler.add_job(
     day_of_week='fri',
     hour=9,
     minute=30,
-    timezone='US/Eastern'
+    timezone='America/New_York'
 )
 
 @app.route('/login', methods=['GET', 'POST'])
