@@ -267,6 +267,19 @@ def rsvps_download():
         'Content-Type': 'text/csv'
     }
 
+@app.route('/rsvps-admin/clear', methods=['POST'])
+def rsvps_clear():
+    if not session.get('rsvp_admin'):
+        return jsonify({'status': 'unauthorized'}), 401
+    
+    try:
+        with open(RSVP_LOG, 'w') as f:
+            json.dump([], f, indent=2)
+        return jsonify({'status': 'ok'}), 200
+    except Exception as e:
+        print(f'Failed to clear RSVPs: {e}')
+        return jsonify({'status': 'error'}), 500
+
 
 # HTML Templates
 ADMIN_LOGIN_TEMPLATE = """
@@ -317,8 +330,10 @@ ADMIN_DASHBOARD_TEMPLATE = """
         th { background: #5c1f4a; color: white; padding: 12px; text-align: left; }
         td { padding: 12px; border-bottom: 1px solid #eee; }
         tr:hover { background: #f9f9f9; }
-        .btn { display: inline-block; padding: 10px 20px; background: #3a9e8f; color: white; text-decoration: none; border-radius: 4px; margin-bottom: 20px; }
+        .btn { display: inline-block; padding: 10px 20px; background: #3a9e8f; color: white; text-decoration: none; border-radius: 4px; margin-bottom: 20px; margin-right: 10px; border: none; cursor: pointer; font-size: 14px; }
         .btn:hover { background: #5c1f4a; }
+        .btn-danger { background: #c8813a; }
+        .btn-danger:hover { background: #a0652c; }
         .yes { color: green; font-weight: bold; }
         .no { color: red; font-weight: bold; }
     </style>
@@ -346,6 +361,17 @@ ADMIN_DASHBOARD_TEMPLATE = """
         </div>
         
         <a href="/rsvps-admin/download" class="btn">Download as CSV</a>
+        <button class="btn btn-danger" onclick="clearData()">Clear All Data</button>
+        
+        <script>
+        function clearData() {
+            if (confirm('Are you sure? This will delete ALL RSVPs.')) {
+                fetch('/rsvps-admin/clear', { method: 'POST' })
+                    .then(r => r.json())
+                    .then(d => { if (d.status === 'ok') location.reload(); });
+            }
+        }
+        </script>
         
         <table>
             <thead>
