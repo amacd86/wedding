@@ -192,7 +192,7 @@
         #dress-code { background: var(--mauve); max-width: 100%; padding: 4rem 2rem; }
         #dress-code .inner { max-width: 900px; margin: 0 auto; }
         #dress-code .section-label { color: var(--teal-light); }
-       #dress-code .section-title em { color: var(--cream); }
+        #dress-code .section-title em { color: var(--cream); }
 
         .dress-code-content { color: var(--cream); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.8; }
         .dress-code-content strong { font-weight: 400; color: var(--gold); }
@@ -294,6 +294,58 @@
             color: rgba(245, 237, 224, 0.4);
             text-align: center;
             margin-top: 1.5rem;
+        }
+
+        /* FAQ */
+        #faq { background: var(--cream); max-width: 100%; padding: 6rem 2rem; }
+        #faq .inner { max-width: 900px; margin: 0 auto; }
+        #faq .section-label { color: var(--teal); }
+        #faq .section-title { color: var(--plum); }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(92, 31, 74, 0.1);
+        }
+
+        .faq-item:last-child { border-bottom: none; }
+
+        .faq-item details {
+            cursor: pointer;
+        }
+
+        .faq-item summary {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--plum);
+            padding: 1rem 0;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item summary:hover { color: var(--teal); }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--teal);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item details[open] summary::after {
+            content: '−';
+        }
+
+        .faq-item .answer {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--deep-plum);
+            padding: 0 0 1.5rem 0;
         }
 
         /* RSVP */
@@ -401,6 +453,7 @@
     <a href="#menu">Menu</a>
     <a href="#location">Location</a>
     <a href="#gallery">Gallery</a>
+    <a href="#faq">FAQ</a>
     <a href="#rsvp">RSVP</a>
 </nav>
 
@@ -417,7 +470,6 @@
     <div class="divider fade-in"></div>
     <p class="body-text fade-in">We're getting married — and we want you there. Join us for a long weekend in the White Mountains of New Hampshire for an intimate celebration surrounded by the people we love most.</p>
     <br>
-    <!-- <p class="body-text fade-in">Three days. Good food. Better company. Mountains all around.</p> -->
 </section>
 
 <!-- SCHEDULE -->
@@ -493,24 +545,6 @@
     </div>
 </div>
 
-<!-- DRESS CODE -->
-<div id="dress-code">
-    <div class="inner">
-        <p class="section-label fade-in">Attire</p>
-        <h2 class="section-title fade-in">What to <em>Wear</em></h2>
-        <div class="divider fade-in" style="background: var(--teal-light);"></div>
-        
-        <div class="dress-code-content fade-in">
-            <p style="margin-bottom: 1.5rem;">
-                <strong>Ceremony & Reception:</strong> Cocktail attire. Look nice but keep it comfortable — no need to be too formal. We love fun colors and designs, so take a chance and wear something you've always wanted to!
-            </p>
-            <p>
-                <strong>All other times:</strong> <em>Comfies encouraged.</em> Come as you are for meals, games, and hanging out.
-            </p>
-        </div>
-    </div>
-</div>
-
 <!-- MENU -->
 <section id="menu">
     <p class="section-label fade-in">Dinner</p>
@@ -549,6 +583,51 @@
 
         <div class="gallery-grid fade-in" id="galleryGrid">
             <p class="gallery-upload-hint">No photos yet — be the first to upload!</p>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div id="faq">
+    <div class="inner">
+        <p class="section-label fade-in">Questions</p>
+        <h2 class="section-title fade-in">Frequently Asked</h2>
+        <div class="divider fade-in"></div>
+
+        <div class="faq-item fade-in">
+            <details>
+                <summary>What should I wear to the ceremony?</summary>
+                <div class="answer">
+                    Cocktail attire. Look nice but keep it comfortable — no need to be too formal. We love fun colors and designs, so take a chance and wear something you've always wanted to!
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item fade-in">
+            <details>
+                <summary>When should I arrive?</summary>
+                <div class="answer">
+                    We were recently offered the opportunity to book Thursday night, August 13th at the Airbnb. Angus and Tessa plan to arrive that evening. Anyone else is welcome to join that early or arrive at any time throughout Friday, or come up for Friday evening as originally planned.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item fade-in">
+            <details>
+                <summary>What should I bring?</summary>
+                <div class="answer">
+                    Whatever you need for a weekend of summer fun and the ceremony! We will be providing food and drinks throughout the weekend, but anyone is welcome (but not expected) to bring anything they'd like to eat, drink, or cook at the Airbnb. There is river access, a pond, and a hot tub — so definitely bring your bathing suit!
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item fade-in">
+            <details>
+                <summary>What about the dress code for other times?</summary>
+                <div class="answer">
+                    Comfies encouraged! Come as you are for meals, games, and hanging out.
+                </div>
+            </details>
         </div>
     </div>
 </div>
